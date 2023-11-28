@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <title>Searching for a country's flag</title>
 </head>
 
@@ -15,27 +16,34 @@
     </form>
 
     <div id="flagContainer">
-        <img id="countryFlag" src="" alt="National flag" style="width: 200px;">
+        <img id="countryFlag" src="img/clean.png" alt="National flag" style="width: 450px;">
     </div>
 
-    <script>
-        function getCountryFlag() {
-            const countryCodeInput = document.getElementById('countryCode').value;
-            const countryFlagImage = document.getElementById('countryFlag');
+<script>
+    function getCountryFlag() {
+        const countryCodeInput = document.getElementById('countryCode').value;
+        const countryFlagImage = document.getElementById('countryFlag');
 
-            fetch('countries.json')
-                .then(response => response.json())
-                .then(countryFlags => {
-                    if (countryFlags.hasOwnProperty(countryCodeInput)) {
-                        const flagURL = countryFlags[countryCodeInput];
-                        countryFlagImage.src = flagURL;
-                    } else {
-                        countryFlagImage.src = 'img/af.png';
-                    }
-                })
-                .catch(error => console.error('Error fetching countries.json:', error));
+        if (!countryCodeInput) {
+            alert('Incorrect code: Enter the country code.');
+            return;
         }
-    </script>
+
+        fetch('countries.json')
+            .then(response => response.json())
+            .then(countryFlags => {
+                if (countryFlags.hasOwnProperty(countryCodeInput)) {
+                    const flagURL = countryFlags[countryCodeInput];
+                    countryFlagImage.src = flagURL;
+                } else {
+                    countryFlagImage.src = 'img/error.png';
+                    alert('Incorrect code: country not found.');
+                }
+            })
+            .catch(error => console.error('Error fetching countries.json:', error));
+    }
+</script>
+
 </body>
 
 </html>

@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#countryForm {
+    text-align: center;
+    margin: 20px auto;
+}
+
+label {
+    font-size: 18px;
+}
+
+#countryCode {
+    font-size: 16px;
+    padding: 8px;
+}
+
+button {
+    font-size: 16px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+#flagContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#countryFlag {
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+    padding: 1px;
+    background: #000000;
+}
